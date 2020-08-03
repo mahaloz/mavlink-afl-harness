@@ -1,7 +1,11 @@
-# MAVLink Fuzz Testing
+# MavLink AFL Harness
+This a just the harnessing source code, and accompanying compile scripts, for
+fuzzing the MavLink communication library. It is based on the repo for fuzzing
+using LibFuzzer [here](https://github.com/Auterion/mavlink-fuzz-testing). 
+
 ## Instructions
 
-1. Make sure clang and cmake are installed.
+1. Have [AFL](https://github.com/google/AFL) downloaded and compiled.
 
 2. Git submodules:
 ```
@@ -13,19 +17,18 @@ git submodule update --init --recursive
 (cd mavlink/pymavlink/ && tools/mavgen.py --lang=C --wire-protocol=2.0 --output=../../generated/include/mavlink/v2.0 ../message_definitions/v1.0/common.xml)
 ```
 
-4. Run one of the fuzzer tests:
+4. Configure the compiler for AFL
+
+
+5. Compile the Harnesses
 
 ```
-cmake -Bbuild src && cmake --build build && build/parser_brute_force CORPUS_DIR/
+cmake -Bbuild src && cmake --build build
 ```
 
+5. Run AFL:
+Example command:
 ```
-cmake -Bbuild src && cmake --build build && build/parser_with_assembled_message CORPUS_DIR/
+/path/to/afl-fuzz -i in_dir -o out_dir build/single_byte_harness
 ```
-
-```
-cmake -Bbuild src && cmake --build build && build/parser_with_random_message CORPUS_DIR/
-```
-
-5. The fuzzer will run until it detects crash. To stop it just press Ctrl+C.
 
