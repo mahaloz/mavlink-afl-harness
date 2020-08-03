@@ -19,7 +19,7 @@ git submodule update --init --recursive
 
 4. Configure the compiler for AFL
 ```
-AFL_DIR=/path/to/afl/dir/
+export AFL_DIR=/path/to/afl/dir/
 ```
 
 5. Compile the Harnesses
