@@ -7,30 +7,21 @@ using LibFuzzer [here](https://github.com/Auterion/mavlink-fuzz-testing).
 
 1. Have [AFL](https://github.com/google/AFL) downloaded and compiled.
 
-2. Git submodules:
-```
-git submodule update --init --recursive
-```
-
-3. Generate the C headers using pymavlink scripts from submodule:
-```
-(cd mavlink/pymavlink/ && tools/mavgen.py --lang=C --wire-protocol=2.0 --output=../../generated/include/mavlink/v2.0 ../message_definitions/v1.0/common.xml)
+2. Run Setup Script
+To run the setup script all you must do is give it the location of the AFL
+folder where AFL's binaries are located
+```bash
+./setup /absolute/path/to/AFL/
 ```
 
-4. Configure the compiler for AFL
-```
-export AFL_DIR=/path/to/afl/dir/
-```
-
-5. Compile the Harnesses
-
-```
-cmake -Bbuild src && cmake --build build
-```
-
-5. Run AFL:
-Example command:
+3. Run AFL on Harness:
 ```
 /path/to/afl-fuzz -i in_dir -o out_dir build/single_byte_harness
 ```
+
+## TODO
+To make this fuzzer better a few things can be done:
+1. Add support for other harnesses (see src folder)
+2. Get example MavLink packets for seeds
+3. Find some crashing examples from other repos for regression testing
 
