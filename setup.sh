@@ -5,6 +5,9 @@ if [ "$#" -ne 1 ]; then
     exit 1
 fi
 
+# download requirements
+apt install cmake -y
+
 # set the afl directory location
 export AFL_DIR=$1
 
