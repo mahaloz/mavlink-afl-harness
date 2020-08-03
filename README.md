@@ -5,7 +5,8 @@ using LibFuzzer [here](https://github.com/Auterion/mavlink-fuzz-testing).
 
 ## Instructions
 
-1. Have [AFL](https://github.com/google/AFL) downloaded and compiled.
+1. Have [AFL](https://github.com/google/AFL) downloaded and compiled. Also make
+   sure to have `cmake`
 
 2. Run Setup Script
 To run the setup script all you must do is give it the location of the AFL
