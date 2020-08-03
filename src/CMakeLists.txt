@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.5)
 
-set(CMAKE_C_COMPILER "/home/mahaloz/fuzzing-capstone/mavlink-fuzz-testing/src/AFL/afl-gcc")
-set(CMAKE_CXX_COMPILER "/home/mahaloz/fuzzing-capstone/mavlink-fuzz-testing/src/AFL/afl-g++")
+set(CMAKE_C_COMPILER "$AFL_DIR/afl-gcc")
+set(CMAKE_CXX_COMPILER "$AFL_DIR/afl-g++")
 set(CMAKE_CXX_STANDARD 14)
 
 set(CMAKE_CXX_FLAGS -static)
