@@ -12,7 +12,7 @@ mkdir build
 apt install cmake -y
 
 # set the afl directory location
-export AFL_DIR=$1
+AFL_DIR=$1
 
 # init MavLink
 git submodule update --init --recursive
@@ -22,6 +22,4 @@ sleep 2
 (cd mavlink/pymavlink/ && tools/mavgen.py --lang=C --wire-protocol=2.0 --output=../../generated/include/mavlink/v2.0 ../message_definitions/v1.0/common.xml)
 
 # compile the harness
-cd build
-cmake ../src
-make 
+$AFL_DIR/afl-g++ -I generated/include/mavlink/v2.0 -static src/single_byte_harness.cpp -o build/single_byte_harness 
