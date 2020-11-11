@@ -1,11 +1,9 @@
 # check parameter count 
 if [ "$#" -ne 2 ]; then
     echo "Error: Not enough parameters, got $1 and $2"
-    echo "Usage: ./setup AFL_LOCATION binary"
+    echo "Usage: ./setup {afl_directory} {name_of_binary}"
     exit 1
 fi
-
-echo "\nWEVE MADE IT THIS FAR\n"
 
 # make build loc
  mkdir build
