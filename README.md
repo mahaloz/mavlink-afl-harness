@@ -1,4 +1,4 @@
-'''Run in Pascal0x90's phuzzer_docker with: sudo ./run.sh single_byte_harness.cpp https://github.com/BPDanek/mavlink-afl-harness.git '''
+```Run in Pascal0x90's phuzzer_docker with: sudo ./run.sh single_byte_harness.cpp https://github.com/BPDanek/mavlink-afl-harness.git ```
 
 For other normal usage: 
 # MavLink AFL Harness
