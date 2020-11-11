@@ -1,3 +1,6 @@
+'''Run in Pascal0x90's phuzzer_docker with: sudo ./run.sh single_byte_harness.cpp https://github.com/BPDanek/mavlink-afl-harness.git '''
+
+For other normal usage: 
 # MavLink AFL Harness
 This a just the harnessing source code, and accompanying compile scripts, for
 fuzzing the MavLink communication library. It is based on the repo for fuzzing
