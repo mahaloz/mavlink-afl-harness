@@ -6,7 +6,6 @@
 
 #define SIZE 10000
 
-extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
 int main() {
 
     char input[SIZE] = {0};
