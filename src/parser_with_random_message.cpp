@@ -4,8 +4,16 @@
 #include <algorithm>
 #include <cstring>
 
+#define SIZE 10000
 
 extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
+int main() {
+
+    char input[SIZE] = {0};
+
+    size_t size;
+    size = read(STDIN_FILENO, input, SIZE);
+
 
     const size_t num_messages = size / sizeof(mavlink_message_t) + ((size % sizeof(mavlink_message_t)) > 0 ? 1 : 0);
 
@@ -16,7 +24,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
     for (int i = 0; i < num_messages; ++i) {
         mavlink_message_t message {};
         const size_t copy_len = std::min(sizeof(message), size - (i * sizeof(message)));
-        std::memcpy(reinterpret_cast<void *>(&message.checksum), data, copy_len);
+        std::memcpy(reinterpret_cast<void *>(&message.checksum), input, copy_len);
 
         buffer_len += mavlink_msg_to_send_buffer(buffer + buffer_len, &message);
     }
